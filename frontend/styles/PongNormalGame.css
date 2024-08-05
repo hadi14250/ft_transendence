@@ -1,0 +1,18 @@
+.gameContainer
+{
+    width: 70%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+
+.matchInfo {
+    margin-bottom: 10px; /* Spacing between match info and player info */
+    color: #FFD335;
+    font-size: 25px;
+    font-family: 'Jost', sans-serif;
+    user-select: none;
+    text-transform: uppercase;
+}

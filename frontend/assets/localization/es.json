@@ -1,0 +1,49 @@
+{
+    "LOGIN_TITLE": "Disfruta el Pong",
+    "LOGIN_SUBTITLE": "Inicia sesión con la cuenta 42",
+    "LOGIN_BUTTON": "Iniciar sesión",
+
+    "ENTER_OTP": "Ingresa el OTP",
+
+    "PLAY": "Jugar",
+    "TOURNAMENT": "Torneo",
+    "SETTINGS": "Configuración",
+    "LOGOUT": "Cerrar sesión",
+    "MAIN_MENU": "Menú principal",
+    "START": "Iniciar",
+    "CONTINUE": "Continuar",
+    "FINISH": "Finalizar",
+
+    "2FA": "Autenticación de Dos Factores (2FA)",
+    "LANGUAGE": "Idioma",
+
+    "SEND_AGAIN": "Enviar de nuevo",
+    "CONFIRM": "Confirmar",
+
+    "WINNER": "Ganador",
+    "VICTORY": "Victoria",
+    "DEFEATED": "Derrotado",
+    "BY_AI": "Por IA",
+
+    "MODE": "Elige el modo",
+
+    "ALIAS_NAME": "Elige nombre de alias",
+    "MATCH": "Partido",
+
+    "PLAYER": "Jugador",
+    "YES": "Sí",
+    "NO": "No",
+    "YOU_SURE": "¿Estás seguro de que deseas salir?",
+    "VALID_PLAYER": "Por favor ingresa nombres de jugadores válidos",
+    "UNIQUE_PLAYER": "Los nombres de los jugadores deben ser únicos",
+
+    "AUTH_MSG": "La autenticación falló o la sesión caducó, por favor intenta iniciar sesión de nuevo.",
+    "AUTH_FAILED_MSG": "La autenticación falló, ¡por favor intenta de nuevo!",
+    "TOURNAMENT_GAME_MSG": "Tu sesión de juego de torneo ha caducado, probablemente debido a un refresco de la página. Serás devuelto al menú principal.",
+    "TOURNAMENT_MSG": "Tu sesión de torneo ha caducado, probablemente debido a un refresco de la página. Serás devuelto al menú principal.",
+
+    "2FA_LOGIN_EXPIRED": "La sesión de inicio ha caducado",
+    "2FA_OTP_FAILED": "El OTP es incorrecto",
+    "2FA_OTP_SENT": "El OTP ha sido enviado a tu correo intra. Si no lo ves en tu bandeja de entrada, por favor revisa tu carpeta de spam o correo no deseado.",
+    "2FA_ERROR_MSG": "Ocurrió un error. Por favor intenta enviar de nuevo."
+}

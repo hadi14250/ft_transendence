@@ -1,0 +1,22 @@
+.modes-button {
+    outline: none;
+    border-radius: 0;
+    border: 2px solid #FFD335;
+    color: #FFD335;
+    background-color: transparent;
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    width: 150px;
+    height: 150px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Add transition for smooth effect */
+}
+.modes-button:hover {
+    background-color: #FFD335;
+    color: #0E0E0E; /* Change text color on hover */
+}

@@ -1,0 +1,56 @@
+.modal {
+    display: flex;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    color: white;
+    align-items: center;
+    justify-content: center;
+    background-color: #0e0e0ea6;
+}
+
+.modal-content {
+    background-color: black;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ffd335;
+    width: 300px;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+}
+
+.modal-button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+}
+
+.yes-button {
+    background-color: transparent;
+    border: 2px solid #ffd335;
+    transition: background-color 0.3s, color 0.3s;
+    color: #ffd335;
+}
+.yes-button:hover {
+    background-color: #ffd335;
+    color: #0E0E0E;
+}
+
+.no-button {
+    background-color: transparent;
+    border: 2px solid #F55C4D;
+    transition: background-color 0.3s, color 0.3s;
+    color: #F55C4D;
+}
+.no-button:hover {
+    background-color: #F55C4D;
+    color: #0E0E0E;
+}

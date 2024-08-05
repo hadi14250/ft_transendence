@@ -1,0 +1,49 @@
+{
+    "LOGIN_TITLE": "Profitez du Pong",
+    "LOGIN_SUBTITLE": "Connectez-vous avec le compte 42",
+    "LOGIN_BUTTON": "Connexion",
+
+    "ENTER_OTP": "Entrez le code OTP",
+
+    "PLAY": "Jouer",
+    "TOURNAMENT": "Tournoi",
+    "SETTINGS": "Paramètres",
+    "LOGOUT": "Déconnexion",
+    "MAIN_MENU": "Menu Principal",
+    "START": "Commencer",
+    "CONTINUE": "Continuer",
+    "FINISH": "Terminer",
+
+    "2FA": "Authentification à Deux Facteurs (2FA)",
+    "LANGUAGE": "Langue",
+
+    "SEND_AGAIN": "Renvoyer",
+    "CONFIRM": "Confirmer",
+
+    "WINNER": "Gagnant",
+    "VICTORY": "Victoire",
+    "DEFEATED": "Défait",
+    "BY_AI": "Par l'IA",
+
+    "MODE": "Choisissez le mode",
+
+    "ALIAS_NAME": "Choisissez un pseudonyme",
+    "MATCH": "Match",
+
+    "PLAYER": "Joueur",
+    "YES": "Oui",
+    "NO": "Non",
+    "YOU_SURE": "Êtes-vous sûr de vouloir quitter?",
+    "VALID_PLAYER": "Veuillez entrer des noms de joueurs valides",
+    "UNIQUE_PLAYER": "Les noms des joueurs doivent être uniques",
+
+    "AUTH_MSG": "Échec de l'authentification ou session expirée, veuillez essayer de vous reconnecter.",
+    "AUTH_FAILED_MSG": "Échec de l'authentification, veuillez réessayer!",
+    "TOURNAMENT_GAME_MSG": "Votre session de jeu de tournoi a expiré, probablement en raison d'un rafraîchissement de la page. Vous serez retourné au menu principal.",
+    "TOURNAMENT_MSG": "Votre session de tournoi a expiré, probablement en raison d'un rafraîchissement de la page. Vous serez retourné au menu principal.",
+
+    "2FA_LOGIN_EXPIRED": "La session de connexion a expiré",
+    "2FA_OTP_FAILED": "Le code OTP est incorrect",
+    "2FA_OTP_SENT": "Le code OTP a été envoyé à votre email intra. Si vous ne le voyez pas dans votre boîte de réception, veuillez vérifier votre dossier spam ou indésirables.",
+    "2FA_ERROR_MSG": "Une erreur s'est produite. Veuillez réessayer d'envoyer à nouveau."
+}

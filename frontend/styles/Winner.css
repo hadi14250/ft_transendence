@@ -1,0 +1,32 @@
+body {
+    background-color: #0E0E0E; /* Set background to black */
+    overflow: hidden; /* Hide scrollbars */
+}
+
+h1, h2, button {
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.winner-name {
+    color: #FFD335;
+    border: 2px solid #FFD335;
+    padding: 2px 40px;
+    font-size: 20pt;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.bot-name {
+    color: #FF4A4A;
+    border: 2px solid #FF4A4A;
+    padding: 2px 40px;
+    font-size: 20pt;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    margin: 10px 0;
+}

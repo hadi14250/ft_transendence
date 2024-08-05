@@ -1,0 +1,140 @@
+body {
+    background-color: #0E0E0E;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Jost', sans-serif;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+    font-weight: 700;
+}
+
+.container {
+    width: 100vh;
+    position: relative;
+    text-align: center;
+}
+
+.exit-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: 2px solid #F55C4D;
+    color: #F55C4D;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    transform: rotate(-90deg);
+    font-size: 1.5em;
+    padding: 20px;
+}
+
+.exit-button:hover {
+    background-color: #F55C4D;
+    color: #0E0E0E;
+}
+
+.header {
+    font-size: 2em;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.sub-header {
+    color: white;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.sub-header.current {
+    color: #FFD335;
+}
+
+.match {
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    align-items: center;
+    width: 25%;
+    opacity: 0.5;
+}
+
+.match.current {
+    opacity: 1;
+}
+
+.player {
+    overflow: hidden;
+    border: 2px solid white;
+    padding: 10px;
+    width: 100%;
+    font-size: 1.2em;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.current {
+    border-color: #FFD335;
+    color: #FFD335;
+}
+
+.winner {
+    color: rgb(82, 235, 82);
+    border-color: rgb(15, 235, 15);
+}
+
+.loser {
+    color: #F55C4D;
+    border-color: #F55C4D;
+}
+
+.btn-start, .btn-finish {
+    outline: none !important;
+    border-radius: 0;
+    border: 2px solid #FFD335;
+    color: #FFD335;
+    background-color: transparent;
+    font-family: 'Jost', sans-serif;
+    font-size: 2em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 40px;
+    padding: 2px 40px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.btn-start:hover, .btn-finish:hover {
+    background-color: #FFD335;
+    color: #0E0E0E;
+}
+
+.btn-finish {
+    border-color: #F55C4D;
+    color: #F55C4D;
+}
+
+.btn-finish:hover {
+    background-color: #F55C4D;
+    color: #0E0E0E;
+}
+
+.matches {
+    display: flex;
+    justify-content: center;
+}

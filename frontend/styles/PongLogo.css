@@ -1,0 +1,54 @@
+#pong-logo {
+    position: relative;
+    width: 574px;
+    height: 205px;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes moveLine1 {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes moveLine2 {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(32px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes bounceBall {
+    0% { transform: translateY(-30px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(-30px); }
+}
+
+@keyframes colorAnimation {
+    0% { fill: #FFD335; }
+    17% { fill: #FF4A4A; }
+    34% { fill: #00E7FD; }
+    51% { fill: #7100FE; }
+    68% { fill: #00E7FD; }
+    85% { fill: #FF4A4A; }
+    100% { fill: #FFD335; }
+}
+
+.gradient-fill {
+    animation: colorAnimation 10s linear infinite;
+}
+
+#line1 {
+    animation: moveLine1 3s ease-in-out infinite;
+}
+
+#line2 {
+    animation: moveLine2 3s ease-in-out infinite;
+}
+
+#ball {
+    animation: bounceBall 4s ease-in-out infinite;
+}

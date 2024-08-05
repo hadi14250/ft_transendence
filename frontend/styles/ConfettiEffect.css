@@ -1,0 +1,32 @@
+.confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background-color: #FFD335;
+    opacity: 0.8;
+    animation: confettiFall 3s linear infinite;
+}
+
+.confetti:nth-child(2n) {
+    background-color: #FF4A4A;
+}
+
+.confetti:nth-child(3n) {
+    background-color: #00E7FD;
+}
+
+.confetti:nth-child(4n) {
+    background-color: #7100FE;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}

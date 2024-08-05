@@ -1,0 +1,85 @@
+/* General body styling */
+body {
+    background-color: #0E0E0E; /* Set background to black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Window styling */
+.window {
+    background-color: #0E0E0E;
+    border: 2px solid #FFD335;
+    width: 800px;
+    padding: 70px;
+    position: relative;
+}
+
+/* Window header styling */
+.window-header {
+    background-color: #FFD335;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    padding: 0 2px 2px 2px;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Window content styling */
+.window-content {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.window-content h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* Input styling */
+.code-input {
+    outline: none;
+    border-radius: 0;
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    margin: 20px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.code-input::placeholder {
+    color: rgba(255, 255, 255, 0.137);
+}
+
+.code-input:focus {
+    border-color: #FFD335;
+}
+
+.code-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #0E0E0E inset !important;
+    -webkit-text-fill-color: white !important;
+    border: 2px solid white !important;
+}
+
+.code-input:-webkit-autofill:hover,
+.code-input:-webkit-autofill:focus,
+.code-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #0E0E0E inset !important;
+    -webkit-text-fill-color: white !important;
+    border-color: #FFD335 !important;
+}

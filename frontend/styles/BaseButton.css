@@ -1,0 +1,36 @@
+.base-button
+{
+    outline: none;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 2px 40px;
+    margin: 10px;
+    font-size: 20pt;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    text-transform: uppercase;
+}
+
+.base-button:hover
+{
+    background-color: #FFD335;
+    color: black;
+    border-color: transparent;
+}
+
+.base-button:active
+{
+    background-color: rgba(white, 0.3);
+}
+
+.base-button:focus
+{
+    outline: none;
+}
+
+.base-button:disabled {
+    background-color: rgba(grey, 0.3);
+    cursor: not-allowed;
+}

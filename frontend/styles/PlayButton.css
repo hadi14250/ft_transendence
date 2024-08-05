@@ -1,0 +1,31 @@
+.play-button
+{
+    outline: none;
+    background-color: transparent;
+    border: 2px solid #FFD335;
+    color: #FFD335;
+    padding: 2px 40px;
+    margin: 10px;
+    font-size: 25pt;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    text-transform: uppercase;
+}
+
+.play-button:hover
+{
+    background-color: #FFD335;
+    color: black;
+    border-color: transparent;
+}
+
+.play-button:active
+{
+    background-color: rgba(white, 0.3);
+}
+
+.play-button:focus
+{
+    outline: none;
+}

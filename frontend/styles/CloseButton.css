@@ -1,0 +1,28 @@
+.close-button {
+    background-color: #0E0E0E;
+    border: solid 2px #F55C4D;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-bottom: 2px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.close-button:after {
+    content: '×';
+    color: #F55C4D;
+    font-size: 30px;
+    transition: color 0.3s;
+}
+
+.close-button:hover {
+    background-color: #F55C4D;
+}
+
+.close-button:hover:after {
+    content: '×';
+    color: #0E0E0E;
+}
