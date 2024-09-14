@@ -10,7 +10,7 @@
 
 <div align="center">
 <a href="https://github.com/hadi14250">
-    <img src="https://i.imgur.com/jmJefdA.gif" alt="Logo"  width="600" height="320">
+    <img src="https://i.imgur.com/jmJefdA.gif" alt="Logo"  width="600" height="420">
   </a>
 
 
