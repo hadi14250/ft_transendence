@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PongGame</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&family=Rubik:wght@300..900&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-weight: 700;
+            overflow: hidden;
+        }
+
+        #pongGame {
+            background-color: black;
+            border: 2px solid #FFD335;
+        }
+
+        #playerInfo {
+            display: flex;
+            align-items: center;
+            color: #ffd335;
+            font-size: 24px;
+            font-family: 'Jost', sans-serif;
+            user-select: none;
+            margin-bottom: 10px; /* Added spacing between player names and score */
+        }
+
+        #matchInfo {
+            display: none; /* Hidden by default */
+            margin-bottom: 10px; /* Spacing between match info and player info */
+            color: #ffd335;
+            font-size: 25px;
+            font-family: 'Jost', sans-serif;
+            user-select: none;
+            text-transform: uppercase;
+        }
+
+        .playerName {
+            border: 2px solid #ffd335;
+            padding: 5px;
+            width: 200px; /* Fixed width */
+            overflow: hidden; /* Crop text if it exceeds the width */
+            white-space: nowrap; /* Prevent text from wrapping */
+            text-overflow: ellipsis; /* Add ellipsis if text is too long */
+            text-align: center; /* Center align the text */
+        }
+
+        #score {
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 40px;
+            margin: 0 50px; /* Added spacing between player names and score */
+        }
+
+        .gameContainer {
+            width: 650px;
+            height: 750px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+        }
+        .exit-button {
+            font-family: 'Jost', sans-serif;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
+            border: 2px solid #F55C4D;
+            color: #F55C4D;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            transform: rotate(-90deg);
+            font-size: 1.5em;
+            padding: 20px;
+        }
+        .exit-button:hover {
+            background-color: #F55C4D;
+            color: #0E0E0E;
+        }
+        #icon-container {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        #icon-container svg {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        #icon-container svg.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="exit-button" onclick="handleExitButtonClick()">▲</div>
+    <div class="gameContainer">
+        <div id="icon-container">
+            <!-- Angry Icon -->
+            <svg id="icon-angry" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+                <defs>
+                    <style>
+                        .cls-1, .cls-2 {
+                            fill: #ffd335;
+                            stroke-width: 0px;
+                        }
+                        .cls-2 {
+                            fill-rule: evenodd;
+                        }
+                        .cls-3 {
+                            display: none;
+                        }
+                    </style>
+                </defs>
+                <path class="cls-2" d="M400,33.3c-36.8,0-66.7,29.8-66.7,66.7s13.4,46.2,33.3,57.7v75.6h-166.7c-55.2,0-100,44.8-100,100v333.3c0,55.2,44.8,100,100,100h400c55.2,0,100-44.8,100-100v-333.3c0-55.2-44.8-100-100-100h-166.7v-75.6c19.9-11.5,33.3-33.1,33.3-57.7,0-36.8-29.8-66.7-66.7-66.7ZM166.7,333.3c0-18.4,14.9-33.3,33.3-33.3h46.1l48.2,96.5c11.3,22.6,34.4,36.9,59.6,36.9h92.1c25.2,0,48.3-14.3,59.6-36.9l48.2-96.5h46.1c18.4,0,33.3,14.9,33.3,33.3v333.3c0,18.4-14.9,33.3-33.3,33.3H200c-18.4,0-33.3-14.9-33.3-33.3v-333.3ZM446.1,366.7l33.3-66.7h-158.8l33.3,66.7h92.1Z"/>
+                <path class="cls-1" d="M33.3,466.7c-18.4,0-33.3,14.9-33.3,33.3v66.7c0,18.4,14.9,33.3,33.3,33.3s33.3-14.9,33.3-33.3v-66.7c0-18.4-14.9-33.3-33.3-33.3Z"/>
+                <path class="cls-1" d="M733.3,500c0-18.4,14.9-33.3,33.3-33.3s33.3,14.9,33.3,33.3v66.7c0,18.4-14.9,33.3-33.3,33.3s-33.3-14.9-33.3-33.3v-66.7Z"/>
+                <g class="cls-3">
+                    <path class="cls-1" d="M300,500c-18.4,0-33.3,14.9-33.3,33.3h66.7c0-18.4-14.9-33.3-33.3-33.3Z"/>
+                    <path class="cls-1" d="M500,500c-18.4,0-33.3,14.9-33.3,33.3h66.7c0-18.4-14.9-33.3-33.3-33.3Z"/>
+                </g>
+                <g>
+                    <path class="cls-1" d="M511.8,536.7c13-13,13-34.1,0-47.1l-47.1,47.1c13,13,34.1,13,47.1,0Z"/>
+                    <path class="cls-1" d="M288.2,536.7c13,13,34.1,13,47.1,0l-47.1-47.1c-13,13-13,34.1,0,47.1Z"/>
+                </g>
+            </svg>
+            <!-- Happy Icon -->
+            <svg id="icon-happy" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+                <defs>
+                    <style>
+                        .cls-1, .cls-2 {
+                            fill: #ffd335;
+                            stroke-width: 0px;
+                        }
+                        .cls-2 {
+                            fill-rule: evenodd;
+                        }
+                        .cls-3 {
+                            display: none;
+                        }
+                    </style>
+                </defs>
+                <path class="cls-2" d="M400,33.3c-36.8,0-66.7,29.8-66.7,66.7s13.4,46.2,33.3,57.7v75.6h-166.7c-55.2,0-100,44.8-100,100v333.3c0,55.2,44.8,100,100,100h400c55.2,0,100-44.8,100-100v-333.3c0-55.2-44.8-100-100-100h-166.7v-75.6c19.9-11.5,33.3-33.1,33.3-57.7,0-36.8-29.8-66.7-66.7-66.7ZM166.7,333.3c0-18.4,14.9-33.3,33.3-33.3h46.1l48.2,96.5c11.3,22.6,34.4,36.9,59.6,36.9h92.1c25.2,0,48.3-14.3,59.6-36.9l48.2-96.5h46.1c18.4,0,33.3,14.9,33.3,33.3v333.3c0,18.4-14.9,33.3-33.3,33.3H200c-18.4,0-33.3-14.9-33.3-33.3v-333.3ZM446.1,366.7l33.3-66.7h-158.8l33.3,66.7h92.1Z"/>
+                <path class="cls-1" d="M33.3,466.7c-18.4,0-33.3,14.9-33.3,33.3v66.7c0,18.4,14.9,33.3,33.3,33.3s33.3-14.9,33.3-33.3v-66.7c0-18.4-14.9-33.3-33.3-33.3Z"/>
+                <path class="cls-1" d="M733.3,500c0-18.4,14.9-33.3,33.3-33.3s33.3,14.9,33.3,33.3v66.7c0,18.4-14.9,33.3-33.3,33.3s-33.3-14.9-33.3-33.3v-66.7Z"/>
+                <g>
+                    <path class="cls-1" d="M300,500c-18.4,0-33.3,14.9-33.3,33.3h66.7c0-18.4-14.9-33.3-33.3-33.3Z"/>
+                    <path class="cls-1" d="M500,500c-18.4,0-33.3,14.9-33.3,33.3h66.7c0-18.4-14.9-33.3-33.3-33.3Z"/>
+                </g>
+                <g class="cls-3">
+                    <path class="cls-1" d="M511.8,536.7c13-13,13-34.1,0-47.1l-47.1,47.1c13,13,34.1,13,47.1,0Z"/>
+                    <path class="cls-1" d="M288.2,536.7c13,13,34.1,13,47.1,0l-47.1-47.1c-13,13-13,34.1,0,47.1Z"/>
+                </g>
+            </svg>
+            <!-- Idol Icon -->
+            <svg id="icon-idol" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+                <defs>
+                    <style>
+                        .cls-1, .cls-2 {
+                            fill: #ffd335;
+                            stroke-width: 0px;
+                        }
+                        .cls-2 {
+                            fill-rule: evenodd;
+                        }
+                    </style>
+                </defs>
+                <path class="cls-1" d="M300,500c-18.4,0-33.3,14.9-33.3,33.3s14.9,33.3,33.3,33.3,33.3-14.9,33.3-33.3-14.9-33.3-33.3-33.3Z"/>
+                <path class="cls-1" d="M466.7,533.3c0-18.4,14.9-33.3,33.3-33.3s33.3,14.9,33.3,33.3-14.9,33.3-33.3,33.3-33.3-14.9-33.3-33.3Z"/>
+                <path class="cls-2" d="M400,33.3c-36.8,0-66.7,29.8-66.7,66.7s13.4,46.2,33.3,57.7v75.6h-166.7c-55.2,0-100,44.8-100,100v333.3c0,55.2,44.8,100,100,100h400c55.2,0,100-44.8,100-100v-333.3c0-55.2-44.8-100-100-100h-166.7v-75.6c19.9-11.5,33.3-33.1,33.3-57.7,0-36.8-29.8-66.7-66.7-66.7ZM166.7,333.3c0-18.4,14.9-33.3,33.3-33.3h46.1l48.2,96.5c11.3,22.6,34.4,36.9,59.6,36.9h92.1c25.2,0,48.3-14.3,59.6-36.9l48.2-96.5h46.1c18.4,0,33.3,14.9,33.3,33.3v333.3c0,18.4-14.9,33.3-33.3,33.3H200c-18.4,0-33.3-14.9-33.3-33.3v-333.3ZM446.1,366.7l33.3-66.7h-158.8l33.3,66.7h92.1Z"/>
+                <path class="cls-1" d="M33.3,466.7c-18.4,0-33.3,14.9-33.3,33.3v66.7c0,18.4,14.9,33.3,33.3,33.3s33.3-14.9,33.3-33.3v-66.7c0-18.4-14.9-33.3-33.3-33.3Z"/>
+                <path class="cls-1" d="M733.3,500c0-18.4,14.9-33.3,33.3-33.3s33.3,14.9,33.3,33.3v66.7c0,18.4-14.9,33.3-33.3,33.3s-33.3-14.9-33.3-33.3v-66.7Z"/>
+            </svg>
+        </div>
+        <div id="playerInfo">
+            <div id="playerOne" class="playerName">AI</div>
+            <div id="score">0 : 0</div>
+            <div id="playerTwo" class="playerName">bsaeed</div>
+        </div>
+        <canvas id="pongGame" width="900" height="600"></canvas>
+    </div>
+    <script src="./PongGame_AI.js"></script>
+    <script>
+        const icons = ['icon-angry', 'icon-happy', 'icon-idol'];
+        const iconContainer = document.getElementById('icon-container');
+
+        function changeIcon() {
+            // Remove 'active' class from all icons
+            icons.forEach(iconId => {
+                document.getElementById(iconId).classList.remove('active');
+            });
+            // Randomly select an icon to activate
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            document.getElementById(randomIcon).classList.add('active');
+        }
+
+        // Initial icon display
+        changeIcon();
+
+        // Change icon every 2-3 seconds
+        setInterval(changeIcon, Math.random() * (3000 - 2000) + 2000);
+    </script>
+</body>
+</html>

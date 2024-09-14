@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Match Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&family=Rubik:wght@300..900&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0E0E0E;
+            color: white;
+            font-family: 'Jost', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            font-weight: 700;
+            overflow: hidden; /* Hide scrollbars */
+        }
+        .container {
+            position: relative;
+            text-align: center;
+        }
+        .exit-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
+            border: 2px solid #F55C4D;
+            color: #F55C4D;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            transform: rotate(-90deg);
+            font-size: 1.5em;
+            padding: 20px;
+        }
+        .exit-button:hover {
+            background-color: #F55C4D;
+            color: #0E0E0E;
+        }
+        .header {
+            font-size: 2em;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        .sub-header {
+            color: #FFD335;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .match {
+            display: flex;
+            flex-direction: column;
+            margin: 10px auto;
+            align-items: center;
+            width: 25%;
+            opacity: 0.5;
+        }
+        .match.current {
+            opacity: 1;
+        }
+        .player {
+            overflow: hidden;
+            border: 2px solid white;
+            padding: 10px;
+            width: 100%;
+            font-size: 1.2em;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .current .player {
+            border-color: #FFD335;
+            color: #FFD335;
+        }
+        .winner {
+            color: rgb(82, 235, 82);
+            border-color: rgb(15, 235, 15);
+        }
+        .loser {
+            color: #F55C4D;
+            border-color: #F55C4D;
+        }
+        .btn-start, .btn-finish {
+            outline: none !important;
+            border-radius: 0;
+            border: 2px solid #FFD335;
+            color: #FFD335;
+            background-color: transparent;
+            font-family: 'Jost', sans-serif;
+            font-size: 2em;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 40px;
+            padding: 2px 40px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .btn-start:hover, .btn-finish:hover {
+            background-color: #FFD335;
+            color: #0E0E0E;
+        }
+        .btn-finish {
+            border-color: #F55C4D;
+            color: #F55C4D;
+        }
+        .btn-finish:hover {
+            background-color: #F55C4D;
+            color: #0E0E0E;
+        }
+        .matches {
+            display: flex;
+            justify-content: center;
+        }
+        .confetti {
+            position: fixed;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background-color: #FFD335;
+            opacity: 0.8;
+            animation: confettiFall 3s linear infinite;
+        }
+        .confetti:nth-child(2n) {
+            background-color: #FF4A4A;
+        }
+        .confetti:nth-child(3n) {
+            background-color: #00E7FD;
+        }
+        .confetti:nth-child(4n) {
+            background-color: #7100FE;
+        }
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            color: white;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: black;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ffd335;
+            width: 300px;
+            text-align: center;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .modal-button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+        }
+
+        .yes-button {
+            background-color: transparent;
+            border: 2px solid #ffd335;
+            transition: background-color 0.3s, color 0.3s;
+            color: #ffd335;
+        }
+        .yes-button:hover {
+            background-color: #ffd335;
+            color: #0E0E0E;
+        }
+
+        .no-button {
+            background-color: transparent;
+            border: 2px solid #F55C4D;
+            transition: background-color 0.3s, color 0.3s;
+            color: #F55C4D;
+        }
+        .no-button:hover {
+            background-color: #F55C4D;
+            color: #0E0E0E;
+        }
+    </style>
+</head>
+<body>
+    <div id="exitModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to exit?</p>
+            <button class="modal-button yes-button" onclick="handleYesButtonClick()">Yes</button>
+            <button class="modal-button no-button" onclick="handleNoButtonClick()">No</button>
+        </div>
+    </div>
+    <div class="exit-button" onclick="showExitConfirmation()">▲</div>
+    <div class="container">
+        <h1 class="header">TOURNAMENT</h1>
+        <div class="matches">
+            <div class="match current" id="match1">
+                <h2 class="sub-header">MATCH 1</h2>
+                <div class="player" id="player1">muganiev</div>
+                <div class="player" id="player2">bsaeed</div>
+            </div>
+            <div class="match" id="match2">
+                <h2 class="sub-header">MATCH 2</h2>
+                <div class="player" id="player3">fkhan</div>
+                <div class="player" id="player4">gchernys</div>
+            </div>
+        </div>
+        <div class="match" id="match3">
+            <h2 class="sub-header">MATCH 3</h2>
+            <div class="player" id="player5"></div>
+            <div class="player" id="player6"></div>
+        </div>
+        <div class="match" id="match-winner">
+            <img style="width: 20%; margin-bottom: 10px;" src="../src/pictures/CrownIcon.svg" alt="Crown Icon">
+            <h2 class="sub-header">WINNER</h2>
+            <div class="player" id="player7"></div>
+        </div>
+        <button class="btn-start" id="StartButton" onclick="handleStartButtonClick()">START</button>
+    </div>
+    <script>
+        let currentMatch = 1;
+
+        function handleExitButtonClick() {
+            alert('Exit button clicked!');
+        }
+
+        function handleStartButtonClick() {
+            const startButton = document.getElementById('StartButton');
+
+            if (currentMatch === 1) {
+                // Match 1 results
+                    document.getElementById('player1').classList.add('winner');
+                    document.getElementById('player2').classList.add('loser');
+                    document.getElementById('match1').classList.remove('current');
+                    document.getElementById('match2').classList.add('current');
+                    
+                    document.getElementById('player5').textContent = document.querySelector('.winner').textContent;
+                    startButton.textContent = 'CONTINUE';
+                    currentMatch++;
+            } else if (currentMatch === 2) {
+                // Match 2 results
+                    document.getElementById('player3').classList.add('winner');
+                    document.getElementById('player4').classList.add('loser');
+                    document.getElementById('match2').classList.remove('current');
+                    document.getElementById('match3').classList.add('current');
+                    
+                    document.getElementById('player6').textContent = document.querySelector('#player3.winner').textContent;
+                    startButton.textContent = 'CONTINUE';
+                    currentMatch++;
+            } else if (currentMatch === 3) {
+                // Match 3 results
+                    document.getElementById('player5').classList.add('winner');
+                    document.getElementById('player6').classList.add('loser');
+                    document.getElementById('match3').classList.remove('current');
+                    document.getElementById('match-winner').classList.add('current');
+                    
+                    document.getElementById('player7').textContent = document.querySelector('#player5.winner').textContent;
+
+                    // Trigger confetti when the winner is determined
+                    createConfetti();
+
+                    startButton.textContent = 'FINISH';
+                    startButton.classList.remove('btn-start');
+                    startButton.classList.add('btn-finish');
+                    currentMatch++;
+            }
+        }
+        // Modal functionality
+        function showExitConfirmation() {
+            document.getElementById('exitModal').style.display = 'flex';
+        }
+
+        function handleYesButtonClick() {
+            // Perform the desired action on "Yes"
+            alert('Exiting...');
+            // Example: Redirect to another page or close the game
+            // window.location.href = 'another_page.html';
+        }
+
+        function handleNoButtonClick() {
+            document.getElementById('exitModal').style.display = 'none';
+        }
+
+        // Create random confetti
+        function createConfetti() {
+            const confettiCount = 150; // Increase number of confetti elements
+            const colors = ['#FFD335', '#FF4A4A', '#00E7FD', '#7100FE'];
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.animationDelay = `${Math.random() * 3}s`;
+                confetti.style.backgroundColor = colors[i % colors.length];
+                document.body.appendChild(confetti);
+            }
+        }
+    </script>
+</body>
+</html>

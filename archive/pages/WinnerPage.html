@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winner!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&family=Rubik:wght@300..900&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0E0E0E; /* Set background to black */
+            overflow: hidden; /* Hide scrollbars */
+        }
+        h1, h2, button {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .winner-name {
+            color: #FFD335;
+            border: 2px solid #FFD335;
+            padding: 2px 40px;
+            font-size: 20pt;
+            text-align: center;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            text-transform: lowercase;
+            margin: 10px 0;
+        }
+        .confetti {
+            position: fixed;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background-color: #FFD335;
+            opacity: 0.8;
+            animation: confettiFall 3s linear infinite;
+        }
+        .confetti:nth-child(2n) {
+            background-color: #FF4A4A;
+        }
+        .confetti:nth-child(3n) {
+            background-color: #00E7FD;
+        }
+        .confetti:nth-child(4n) {
+            background-color: #7100FE;
+        }
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center flex-column align-items-center vh-100 position-relative">
+    <div id="pong-logo-animation"></div>
+    <h2 style="font-size: 70pt; color: #FFD335;">VICTORY</h2>
+    <img style="width: 4%; margin-bottom: 10px;" src="../src/pictures/CrownIcon.svg" alt="Crown Icon">
+    
+    <div class="winner-name" id="winner-name">bsaeed</div>
+    
+    <button data-base-button data-font-size="20" data-text-color="white" data-stroke-color="white" data-hover-text-color="#0E0E0E" data-hover-background-color="#FFD335" data-onclick="handleButtonClick">Main Menu</button>
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="BaseButton.js"></script>
+    <script src="LogoAnim.js"></script>
+    <script>
+      // Define the action for the button
+      function handleButtonClick() {
+        alert('Button Main Menu clicked!');
+      }
+
+      // Create random confetti
+      function createConfetti() {
+        const confettiCount = 150; // Increase number of confetti elements
+        const colors = ['#FFD335', '#FF4A4A', '#00E7FD', '#7100FE'];
+
+        for (let i = 0; i < confettiCount; i++) {
+          const confetti = document.createElement('div');
+          confetti.classList.add('confetti');
+          confetti.style.left = `${Math.random() * 100}vw`;
+          confetti.style.animationDelay = `${Math.random() * 3}s`;
+          confetti.style.backgroundColor = colors[i % colors.length];
+          document.body.appendChild(confetti);
+        }
+      }
+
+      // Run the createConfetti function on page load
+      document.addEventListener('DOMContentLoaded', createConfetti);
+    </script>
+</body>
+</html>

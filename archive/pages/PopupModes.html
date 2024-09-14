@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Selection</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&family=Rubik:wght@300..900&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0E0E0E; /* Set background to black */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .window {
+            background-color: #0E0E0E;
+            border: 2px solid #FFD335;
+            width: 800px;
+            padding: 70px;
+            position: relative;
+        }
+        .window-header {
+            background-color: #FFD335;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            top: 0px;
+            left: 0;
+            right: 0;
+        }
+        .window-header .close-button {
+            background-color: #0E0E0E;
+            border: solid 2px #F55C4D;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding-bottom: 2px;
+            transition: background-color 0.3s, color 0.3s; /* Add transition for smooth effect */
+        }
+        .window-header .close-button:after {
+            content: '×';
+            color: #F55C4D;
+            font-size: 30px;
+            transition: color 0.3s; /* Add transition for smooth effect */
+        }
+        .window-header .close-button:hover {
+            background-color: #F55C4D;
+        }
+        .window-header .close-button:hover:after {
+            content: '×';
+            color: #0E0E0E;
+        }
+        .window-content {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .window-content h2 {
+            color: white;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        .btn {
+            outline: none;
+            border-radius: 0;
+            border: 2px solid #FFD335;
+            color: #FFD335;
+            background-color: transparent;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 25px;
+            width: 150px;
+            height: 150px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s; /* Add transition for smooth effect */
+        }
+        .btn:hover {
+            background-color: #FFD335;
+            color: #0E0E0E; /* Change text color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div class="window-header">
+            <div class="close-button" onclick="handleCloseButtonClick()"></div>
+        </div>        
+        <div class="window-content">
+            <h2>Choose the mode</h2>
+            <button class="btn" onmousedown="handlePvPButtonClick(this)">PvP</button>
+            <button class="btn" onmousedown="handleAIButtonClick(this)">AI</button>
+        </div>
+    </div>
+    <script>
+        function handleCloseButtonClick() {
+            alert('Close button clicked!');
+        }
+
+        function handlePvPButtonClick() {
+            alert('PvP button clicked!');
+        }
+        function handleAIButtonClick() {
+            alert('Ai button clicked!');
+        }
+    </script>
+</body>
+</html>

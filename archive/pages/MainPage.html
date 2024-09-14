@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&family=Rubik:wght@300..900&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0E0E0E; /* Set background to black */
+        }
+        h1, h2, button {
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #FFD335;
+        }
+        .username {
+            color: #FFD335;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            text-transform: lowercase;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center flex-column align-items-center vh-100">
+    <div class="profile-container">
+      <img id="profile-picture" class="profile-picture" src="../src/pictures/DefaultProfilePicture.svg" alt="Profile Picture">
+      <div id="username" class="username">username</div>
+    </div>
+    <div id="pong-logo-animation"></div>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <button data-base-button data-font-size="25" data-text-color="#FFD335" data-stroke-color="#FFD335" data-hover-text-color="#0E0E0E" data-hover-background-color="#FFD335" data-onclick="handleButtonClickPlay">Play</button>
+        <button data-base-button data-font-size="20" data-text-color="white" data-stroke-color="white" data-hover-text-color="#0E0E0E" data-hover-background-color="#FFD335" data-onclick="handleButtonClickTournament">Tournament</button>
+        <button data-base-button data-font-size="20" data-text-color="white" data-stroke-color="white" data-hover-text-color="#0E0E0E" data-hover-background-color="#FFD335" data-onclick="handleButtonClickSettings">Settings</button>
+        <button data-base-button data-font-size="20" data-text-color="#FF4A4A" data-stroke-color="#FF4A4A" data-hover-text-color="#0E0E0E" data-hover-background-color="#FF4A4A" data-onclick="handleButtonClickLogOut">Log out</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="BaseButton.js"></script>
+    <script src="LogoAnim.js"></script>
+    <script>
+
+      // Define the action for the buttons
+      function handleButtonClickPlay() {
+        alert('Button Play clicked!');
+      }
+      function handleButtonClickTournament() {
+        alert('Button Tournament clicked!');
+      }
+      function handleButtonClickSettings() {
+        alert('Button Settings clicked!');
+      }
+      function handleButtonClickLogOut() {
+        alert('Button Log out clicked!');
+      }
+
+      // Define Users picture and username according intra
+      function updateProfile(profilePicUrl, userName) {
+        document.getElementById('profile-picture').src = profilePicUrl;
+        document.getElementById('username').textContent = userName;
+      }
+      updateProfile('https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlleGV8MHx8MHx8fDA%3D', 'bsaeed');
+    </script>
+</body>
+</html>

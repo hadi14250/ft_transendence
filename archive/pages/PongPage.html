@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PongGame</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&family=Rubik:wght@300..900&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-weight: 700;
+            overflow: hidden;
+        }
+
+        #pongGame {
+            background-color: black;
+            border: 2px solid #FFD335;
+        }
+
+        #playerInfo {
+            display: flex;
+            align-items: center;
+            color: #ffd335;
+            font-size: 24px;
+            font-family: 'Jost', sans-serif;
+            user-select: none;
+            margin-bottom: 10px; /* Added spacing between player names and score */
+        }
+
+        #matchInfo {
+            display: none; /* Hidden by default */
+            margin-bottom: 10px; /* Spacing between match info and player info */
+            color: #ffd335;
+            font-size: 25px;
+            font-family: 'Jost', sans-serif;
+            user-select: none;
+            text-transform: uppercase;
+        }
+
+        .playerName {
+            border: 2px solid #ffd335;
+            padding: 5px;
+            width: 200px; /* Fixed width */
+            overflow: hidden; /* Crop text if it exceeds the width */
+            white-space: nowrap; /* Prevent text from wrapping */
+            text-overflow: ellipsis; /* Add ellipsis if text is too long */
+            text-align: center; /* Center align the text */
+        }
+
+        #score {
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 40px;
+            margin: 0 50px; /* Added spacing between player names and score */
+        }
+
+        .gameContainer {
+            width: 70%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+        }
+        .exit-button {
+            font-family: 'Jost', sans-serif;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
+            border: 2px solid #F55C4D;
+            color: #F55C4D;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            transform: rotate(-90deg);
+            font-size: 1.5em;
+            padding: 20px;
+        }
+        .exit-button:hover {
+            background-color: #F55C4D;
+            color: #0E0E0E;
+        }
+
+        /* Custom Modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            color: white;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: black;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ffd335;
+            width: 300px;
+            text-align: center;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .modal-button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+        }
+
+        .yes-button {
+            background-color: transparent;
+            border: 2px solid #ffd335;
+            transition: background-color 0.3s, color 0.3s;
+            color: #ffd335;
+        }
+        .yes-button:hover {
+            background-color: #ffd335;
+            color: #0E0E0E;
+        }
+
+        .no-button {
+            
+            background-color: transparent;
+            border: 2px solid #F55C4D;
+            transition: background-color 0.3s, color 0.3s;
+            color: #F55C4D;
+        }
+        .no-button:hover {
+            background-color: #F55C4D;
+            color: #0E0E0E;
+        }
+    </style>
+</head>
+<body>
+    <div class="exit-button" onclick="showExitConfirmation()">▲</div>
+    <div class="gameContainer">
+        <div id="matchInfo">Match 1</div>
+        <div id="playerInfo">
+            <div id="playerOne" class="playerName">bsaeed</div>
+            <div id="score">0 : 0</div>
+            <div id="playerTwo" class="playerName">muganiev</div>
+        </div>
+        <canvas id="pongGame" width="900" height="600"></canvas>
+    </div>
+
+    <!-- Custom Modal -->
+    <div id="exitModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to exit?</p>
+            <button class="modal-button yes-button" onclick="handleYesButtonClick()">Yes</button>
+            <button class="modal-button no-button" onclick="handleNoButtonClick()">No</button>
+        </div>
+    </div>
+
+    <script src="./PongGame.js"></script>
+    <script>
+        // Function to toggle tournament mode
+        function toggleTournamentMode(isTournament) {
+            const matchInfoDiv = document.getElementById('matchInfo');
+            if (isTournament) {
+                matchInfoDiv.style.display = 'block';
+            } else {
+                matchInfoDiv.style.display = 'none';
+            }
+        }
+
+        function showExitConfirmation() {
+            document.getElementById('exitModal').style.display = 'flex';
+        }
+
+        function handleYesButtonClick() {
+            // Perform the desired action on "Yes"
+            alert('Exiting...');
+            // Example: Redirect to another page or close the game
+            // window.location.href = 'another_page.html';
+        }
+
+        function handleNoButtonClick() {
+            document.getElementById('exitModal').style.display = 'none';
+        }
+
+        toggleTournamentMode(true); // Show match info (for tournament mode)
+        // toggleTournamentMode(false); // Hide match info (for single-game mode)
+    </script>
+</body>
+</html>

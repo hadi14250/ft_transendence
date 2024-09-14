@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alias Selection</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&family=Rubik:wght@300..900&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0E0E0E; /* Set background to black */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .window {
+            background-color: #0E0E0E;
+            border: 2px solid #FFD335;
+            width: 800px;
+            padding: 70px;
+            position: relative;
+        }
+        .window-header {
+            background-color: #FFD335;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            top: 0px;
+            left: 0;
+            right: 0;
+        }
+        .window-header .close-button {
+            background-color: #0E0E0E;
+            border: solid 2px #F55C4D;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding-bottom: 2px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .window-header .close-button:after {
+            content: '×';
+            color: #F55C4D;
+            font-size: 30px;
+            transition: color 0.3s;
+        }
+        .window-header .close-button:hover {
+            background-color: #F55C4D;
+        }
+        .window-header .close-button:hover:after {
+            content: '×';
+            color: #0E0E0E;
+        }
+        .window-content {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .window-content h2 {
+            color: white;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            margin-bottom: 20;
+        }
+        .alias-input {
+            outline: none;
+            border-radius: 0;
+            border: 2px solid white;
+            color: white;
+            background-color: transparent;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            font-size: 25px;
+            width: 250px;
+            height: 50px;
+            text-align: center;
+            margin: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .alias-input::placeholder {
+            color: rgba(255, 255, 255, 0.137);
+        }
+        .alias-input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px #0E0E0E inset !important;
+            -webkit-text-fill-color: white !important;
+            border: 2px solid white !important;
+        }
+        .alias-input:-webkit-autofill:hover,
+        .alias-input:-webkit-autofill:focus,
+        .alias-input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0px 1000px #0E0E0E inset !important;
+            -webkit-text-fill-color: white !important;
+            border: 2px solid white !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div class="window-header">
+            <div class="close-button" onclick="handleCloseButtonClick()"></div>
+        </div>        
+        <div class="window-content">
+            <h2>Choose alias name</h2>
+            <div>
+                <input type="text" class="alias-input" placeholder="Player1" id="player1">
+                <input type="text" class="alias-input" placeholder="Player2" id="player2">
+            </div>
+            <div>
+                <input type="text" class="alias-input" placeholder="Player3" id="player3">
+                <input type="text" class="alias-input" placeholder="Player4" id="player4">
+            </div>
+            <button data-base-button data-font-size="20" data-text-color="#FFD335" data-stroke-color="#FFD335" data-hover-text-color="#0E0E0E" data-hover-background-color="#FFD335" data-onclick="handleStartButtonClick">START</button>
+        </div>
+    </div>
+    <script src="BaseButton.js"></script>
+    <script>
+        function handleCloseButtonClick() {
+            alert('Close button clicked!');
+        }
+
+        function handleStartButtonClick() {
+            const player1 = document.getElementById('player1').value;
+            const player2 = document.getElementById('player2').value;
+            const player3 = document.getElementById('player3').value;
+            const player4 = document.getElementById('player4').value;
+            alert(`Players: ${player1}, ${player2}, ${player3}, ${player4}`);
+        }
+    </script>
+</body>
+</html>

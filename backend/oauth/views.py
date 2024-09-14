@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+import os
 import requests
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -10,26 +12,26 @@ from accounts.models import UserProfile
 from datetime import datetime
 from django.utils import timezone
 
-# Replace with your actual values
-INTRA_AUTHORIZE_URL = "https://api.intra.42.fr/oauth/authorize"
-INTRA_TOKEN_URL = "https://api.intra.42.fr/oauth/token"
-INTRA_USER_INFO_URL = "https://api.intra.42.fr/v2/me"
-CLIENT_ID = 'u-s4t2ud-434210c1463ba59055ca161772f77b2fafc69b6e8f210036ffdb992f09b57f76'
-CLIENT_SECRET = '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'
-REDIRECT_URI = 'http://localhost:80/oauth/callback/'
+load_dotenv()
 
+intraAuthUrl = os.environ.get("INTRA_AUTHORIZE_URL")
+intraTokenUrl = os.environ.get("INTRA_TOKEN_URL")
+intraUserInfoUrl = os.environ.get("INTRA_USER_INFO_URL")
+clientId = os.environ.get("CLIENT_ID")
+clientSecret = os.environ.get("CLIENT_SECRET")
+redirectUri = os.environ.get("REDIRECT_URI")
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def authorize(request):
     params = {
-        'client_id': CLIENT_ID,
-        'redirect_uri': REDIRECT_URI,
+        'client_id': clientId,
+        'redirect_uri': redirectUri,
         'response_type': 'code',
         'scope': 'public',
         'prompt': 'login',  # Add this parameter to force login prompt
     }
-    authorize_url = f"{INTRA_AUTHORIZE_URL}?{requests.compat.urlencode(params)}"
+    authorize_url = f"{intraAuthUrl}?{requests.compat.urlencode(params)}"
     return Response({"authorization_url": authorize_url})
 
 @api_view(['POST'])
@@ -41,16 +43,16 @@ def auth_token(request):
 
     token_data = {
         'grant_type': 'authorization_code',
-        'client_id': CLIENT_ID,
-        'client_secret': CLIENT_SECRET,
+        'client_id': clientId,
+        'client_secret': clientSecret,
         'code': code,
-        'redirect_uri': REDIRECT_URI,
+        'redirect_uri': redirectUri,
     }
 
     # Log request data for debugging
     print("Token Request Data:", token_data)
 
-    token_response = requests.post(INTRA_TOKEN_URL, data=token_data)
+    token_response = requests.post(intraTokenUrl, data=token_data)
 
     # Log response for debugging
     print("Token Response Status Code:", token_response.status_code)
@@ -64,7 +66,7 @@ def auth_token(request):
     if not access_token:
         return Response({"error": "Access token not found in the response"}, status=status.HTTP_400_BAD_REQUEST)
 
-    user_info_response = requests.get(INTRA_USER_INFO_URL, headers={
+    user_info_response = requests.get(intraUserInfoUrl, headers={
         'Authorization': f'Bearer {access_token}'
     })
 
