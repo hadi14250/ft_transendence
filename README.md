@@ -23,6 +23,14 @@
 
 Transcendence is a project developed as part of the final stage in the 42 curriculum. The objective was to recreate a vintage ping pong game from the 1970s, challenging us to work within significant constraints. We were prohibited from using contemporary libraries or frameworks, so we implemented the front end using pure JavaScript and the back end with Python and Django.
 
+<br>
+
+## Distinctive Features
+
+To overcome the restriction on using front-end frameworks, we created our own, inspired by React. We named it **`The Onion Framework`**.
+
+<br>
+
 ## Tech Stack
 
 <img align="left" alt="JavaScript" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
@@ -100,5 +108,4 @@ Transcendence is a project developed as part of the final stage in the 42 curric
     </td>
 </tr>
 </table>
-
 
