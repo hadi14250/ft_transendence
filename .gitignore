@@ -51,3 +51,5 @@ db.sqlite3
 docker-compose.override.yml
 docker-compose.dev.yml
 docker-compose.p
+
+.DS_Store
