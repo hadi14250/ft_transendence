@@ -1,6 +1,6 @@
 <div align="center">
 <a href="https://github.com/hadi14250">
-    <img src="backend/staticfiles/images/racket.gif" alt="Logo" width="150" height="150">
+    <img src="backend/staticfiles/images/racket.gif" alt="Racket Gif" width="150" height="150">
   </a>
   <h3 align="center">Transcendence</h3>
   Final common core project of 42 Abu Dhabi
@@ -10,7 +10,7 @@
 
 <div align="center">
 <a href="https://github.com/hadi14250">
-    <img src="backend/staticfiles/images/game.gif" alt="Logo"  width="600" height="400">
+    <img src="backend/staticfiles/images/game.gif" alt="Gameplay Gif"  width="600" height="400">
   </a>
 
 
