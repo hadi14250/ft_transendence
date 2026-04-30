@@ -3,7 +3,7 @@
     <img src="backend/staticfiles/images/racket.gif" alt="Racket Gif" width="150" height="150">
   </a>
   <h3 align="center">Transcendence</h3>
-  Final common core project of 42 Abu Dhabi
+  The capstone project of the 42 Abu Dhabi common core
   <br>
   <br>
 </div>
@@ -21,13 +21,13 @@
 
 # Transcendence
 
-Transcendence is a project developed as part of the final stage in the 42 curriculum. The objective was to recreate a vintage ping pong game from the 1970s, challenging us to work within significant constraints. We were prohibited from using contemporary libraries or frameworks, so we implemented the front end using pure JavaScript and the back end with Python and Django.
+Transcendence is the closing project of the 42 common core. The brief was to bring back the classic 1970s Pong experience, but under tight technical limitations: no modern frameworks or libraries were allowed. To meet that challenge, we built the frontend in vanilla JavaScript and powered the backend with Python and Django.
 
 <br>
 
-## Distinctive Features
+## What Makes It Stand Out
 
-To overcome the restriction on using front-end frameworks, we created our own, inspired by React. We named it **`The Onion Framework`**.
+Since front-end frameworks were off-limits, we engineered our own from scratch, taking cues from React's component model. We call it **`The Onion Framework`**.
 
 <br>
 
@@ -55,13 +55,13 @@ To overcome the restriction on using front-end frameworks, we created our own, i
 <br>
 <br>
 
-## Deployment
+## Getting Started
 
-- Start Docker
-- Run ```docker-compose up --build```
-- Go to ```https://localhost:80/```
-- Authorise With 42 Intra
-- Enjoy
+- Make sure Docker is running
+- Spin everything up with ```docker-compose up --build```
+- Open ```https://localhost:80/``` in your browser
+- Sign in through 42 Intra
+- Have fun
 
 
 
